@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package cactus;
+
+option cc_generic_services = true;
+
+message TestRequest {
+    string query = 1;
+}
+
+message TestResponse {
+    string results = 1;
+}
+
+message PingRequest {
+    uint32 ping = 1;
+}
+
+message PingResponse {
+    uint32 pong = 1;
+}
+
+service TestService {
+    rpc Search(TestRequest) returns (TestResponse);
+    rpc Ping(PingRequest) returns (PingResponse);
+}
+
+service AnotherService {
+    rpc Ping(PingRequest) returns (PingResponse);
+}
+
+message Credentials {
+    string login = 1;
+    string password = 2;
+}
+
+message Token {
+    string token = 1;
+}
+
+message Tokens {
+    repeated Token tokens = 1;
+}
+
+message LogoutResult {
+    bool ok = 1;
+}
+
+service UserService {
+    rpc Login(Credentials) returns (Token);
+    rpc Logout(Token) returns (LogoutResult);
+    rpc GetAllTokens(Token) returns (Tokens);
+}

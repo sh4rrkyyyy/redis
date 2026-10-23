@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package cactus;
+
+option cc_generic_services = true;
+
+message TestRequest {
+    string query = 1;
+}
+
+message TestResponse {
+    string results = 1;
+}
+
+message PingRequest {}
+
+message PingResponse {}
+
+service TestService {
+    rpc Search(TestRequest) returns (TestResponse);
+    rpc Ping(PingRequest) returns (PingResponse);
+}

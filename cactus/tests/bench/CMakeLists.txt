@@ -1,0 +1,11 @@
+add_catch(bench_cactus_ctx context_benchmark.cpp)
+target_link_libraries(bench_cactus_ctx PRIVATE cactus)
+
+add_catch(bench_cactus_sched scheduler_benchmark.cpp)
+target_link_libraries(bench_cactus_sched PRIVATE cactus)
+
+add_catch(bench_net_server net_server_benchmark.cpp)
+target_link_libraries(bench_net_server PRIVATE cactus)
+
+add_catch(bench_net_ping_pong net_ping_pong_benchmark.cpp)
+target_link_libraries(bench_net_ping_pong PRIVATE cactus)

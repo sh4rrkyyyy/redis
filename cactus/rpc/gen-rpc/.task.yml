@@ -1,0 +1,8 @@
+version: 1
+
+parameters:
+  allow_change: [rpc_generator.cpp]
+  tests: [
+    test_cactus_rpc_gen, Asan,
+    test_cactus_rpc_gen, RelWithDebInfo
+  ]

@@ -1,0 +1,7 @@
+add_if_exists(io)
+add_if_exists(coro)
+add_if_exists(net)
+add_if_exists(query-builder)
+add_if_exists(query-parser)
+add_if_exists(redis-client)
+add_if_exists(redis-server)

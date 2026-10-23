@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package cactus;
+
+message RequestHeader {
+    string service = 1;
+    string method = 2;
+}
+
+message RpcError {
+    string message = 1;
+}
+
+message ResponseHeader {
+    RpcError rpc_error = 1;
+}

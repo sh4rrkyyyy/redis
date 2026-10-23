@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package ficus;
+
+option cc_generic_services = true;
+
+message Bar {
+    int32 a = 1;
+    uint64 b = 2;
+}
+
+message Baz {
+    bool c = 1;
+    fixed32 d = 2;
+}
+
+service PrivateService {
+    rpc BarToBaz(Bar) returns (Baz);
+    rpc BazToBar(Baz) returns (Bar);
+    rpc BarToBar(Bar) returns (Bar);
+    rpc BazToBaz(Baz) returns (Baz);
+}
+
+message Credentials {
+    string login = 1;
+    string password = 2;
+}
+
+message Token {
+    string token = 1;
+}
+
+message Tokens {
+    repeated Token tokens = 1;
+}
+
+message LogoutResult {
+    bool ok = 1;
+}
+
+service UserService {
+    rpc Login(Credentials) returns (Token);
+    rpc Logout(Token) returns (LogoutResult);
+    rpc GetAllTokens(Token) returns (Tokens);
+}
